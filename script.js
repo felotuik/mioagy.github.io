@@ -27,6 +27,7 @@ ajax('data/collection.json', {}, function(data) {
 
 ajax('data/nicetool.json', {}, function(data) {
     $('.Navbar>li[data-id="app"]>.tag').html(data.length);
+    $('.Vary-item.app .list .showMore b').html(data.length - 30);
     for (let i=0,len=data.length; i < len; i++) {
         var a = (i > 30) ? ' style="display:none"' : '';
         $('.Vary-item.app>ul').append('<li'+a+'><a href="#app-' + data[i].path + '" data-path="' + data[i].path + '" title="'+data[i].show+'">'+data[i].name+'</a></li>');
@@ -38,6 +39,13 @@ $(document).on('click', '.Vary-item.app>ul>li>a', function() {
     creatModal($(this).html(), '<iframe src="http://www.nicetool.net/embed/' + $(this).attr('data-path') + '.html" width="800" height="450" frameborder="0"></iframe>', 800, 450, '<button class="primary btn">刷新</button><button class="btn close">关闭</button>');
 });
 
+$('.Vary-item.app .list .showMore').click(function() {
+    $(this).remove();
+    $('.Vary-item.app li').show();
+});
+
+
+
 if (location.href.substr(0, 5) == 'https') {
     $('.PageFooter .https').html('已启用安全的HTTPS');
     $('.PageFooter .https').css('color', 'green')
@@ -45,7 +53,7 @@ if (location.href.substr(0, 5) == 'https') {
     $('.PageFooter .https').parent().attr('href', 'https' + location.href.substring(4));
 }
 
-creatModal('输入密钥', '<p>用于某些加密数据的密钥：</p><input type="text" class="b" />', 300, 'auto', '<button class="primary btn">确定</button><button class="btn close">取消</button>');
+//creatModal('输入密钥', '<p>用于某些加密数据的密钥：</p><input type="text" class="b" />', 300, 'auto', '<button class="primary btn">确定</button><button class="btn close">取消</button>');
 
 
 function creatModal(title, body, w = 500, h = 300, foot = '') {
