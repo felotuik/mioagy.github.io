@@ -1,3 +1,5 @@
+modalid = 0
+
 function ajax (url, data, sfn) {
     $.ajax({
         'type': 'GET',
@@ -31,8 +33,10 @@ ajax('data/nicetool.json', {}, function(data) {
     }
 })
 
+
 $(document).on('click', '.Vary-item.app>ul>li>a', function() {
-    creatModal($(this).html(), '<iframe src="http://www.nicetool.net/embed/' + $(this).attr('data-path') + '.html" width="800" height="450" frameborder="0"></iframe>', 800, 450, '<button class="primary btn">刷新</button><button class="btn close">关闭</button>');
+    creatModal($(this).html(), '<iframe src="" width="800" height="450" frameborder="0"></iframe>', 800, 450, '<button class="primary btn">刷新</button><button class="btn close">关闭</button>', ++modalid);
+    $('.Modal.Modal' + modalid + ' .Modal-body iframe').attr('src', 'http://www.nicetool.net/embed/' + $(this).attr('data-path') + '.html');
 });
 
 if (location.href.substr(0, 5) == 'https') {
@@ -42,13 +46,13 @@ if (location.href.substr(0, 5) == 'https') {
     $('.PageFooter .https').parent().attr('href', 'https' + location.href.substring(4));
 }
 
-//creatModal('输入密钥', '<p>用于某些加密数据的密钥：</p><input type="text" class="b" />', 300, 'auto', '<button class="primary btn">确定</button><button class="btn close">取消</button>');
+//creatModal('输入密钥', '<p>用于某些加密数据的密钥：</p><input type="text" class="b" />', 300, 'auto', '<button class="primary btn">确定</button><button class="btn close">取消</button>', ++modalid);
 
 
-function creatModal(title, body, w = 500, h = 300, foot = '', auto) {
+function creatModal(title, body, w = 500, h = 300, foot = '', modalid) {
     var left = $(document).width() / 2 - w / 2,
         top = $(document).height() / 2 - h / 2;
-    $('body').append('<div class="Modal" style="width:'+w+'px;height:'+h+'px;top:'+top+'px;left:'+left+'px;"><div class="close">×</div><div class="Modal-head fontA">' + title + '</div><div class="Modal-body">' + body + '</div><div class="Modal-foot">' + foot + '</div></div>');
+    $('body').append('<div class="Modal Modal'+modalid+'" style="width:'+w+'px;height:'+h+'px;top:'+top+'px;left:'+left+'px;"><div class="close">×</div><div class="Modal-head fontA">' + title + '</div><div class="Modal-body">' + body + '</div><div class="Modal-foot">' + foot + '</div></div>');
 }
 
 
