@@ -48,8 +48,8 @@ if (location.href.substr(0, 5) == 'https') {
 
 
 function creatModal(title, body, w = 500, h = 300, foot = '') {
-    var left = $(document).width() / 2 - w / 2,
-        top = $(document).height() / 2 - h / 2;
+    var left = window.screen.width / 2 - w / 2,
+        top = window.screen.height / 2 - h / 2;
     $('body').append('<div class="Modal" style="width:'+w+'px;height:'+h+'px;top:'+top+'px;left:'+left+'px;"><div class="close">×</div><div class="Modal-head fontA">' + title + '</div><div class="Modal-body">' + body + '</div><div class="Modal-foot">' + foot + '</div></div>');
 }
 
