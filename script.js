@@ -18,8 +18,9 @@ function ajax (url, data, sfn) {
 }
 
 ajax('data/collection.json', {}, function(data) {
+    $('.Navbar>li[data-id=collection]>.tag').html(data.length);
     for (let i=0,len=data.length; i < len; i++) { 
-        $('.Vary-item.collection>ul').append('<li><a href="' + data[i].link + '" data-tag="'+data[i].tag+'" target="_blank">'+data[i].name+'</a></li>')
+        $('.Vary-item.collection>ul').append('<li><a href="' + data[i].link + '" data-tag="'+data[i].tag+'" target="_blank">'+data[i].name+'</a></li>');
     }
 })
 
@@ -30,7 +31,7 @@ if (location.href.substr(0, 5) == 'https') {
     $('.PageFooter .https').parent().attr('href', 'https' + location.href.substring(4));
 }
 
-creatModal('输入密钥', '<p>用于某些加密数据的密钥：</p><input type="text" class="b" />', 300, 'auto', '<button class="primary btn">确定</button><button class="btn close">取消</button>');
+//creatModal('输入密钥', '<p>用于某些加密数据的密钥：</p><input type="text" class="b" />', 300, 'auto', '<button class="primary btn">确定</button><button class="btn close">取消</button>');
 
 
 var modalId = 2;
