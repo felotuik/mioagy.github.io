@@ -30,7 +30,7 @@ ajax('data/nicetool.json', {}, function(data) {
     $('.Vary-item.app .list .showMore b').html(data.length - 30);
     for (let i=0,len=data.length; i < len; i++) {
         var a = (i > 30) ? ' style="display:none"' : '';
-        $('.Vary-item.app>ul').append('<li'+a+'><a href="#app-' + data[i].path + '" data-path="' + data[i].path + '" title="'+data[i].show+'">'+data[i].name+'</a></li>');
+        $('.Vary-item.app>ul .showMore').before('<li'+a+'><a href="#app-' + data[i].path + '" data-path="' + data[i].path + '" title="'+data[i].show+'">'+data[i].name+'</a></li>');
     }
 })
 

@@ -274,6 +274,7 @@ input.b {
     margin-right: 0;
 }
 .showMore {
+    margin-top: 10px;
     transition: .2s;
     text-align: center;
     border: 1px dashed rgba(48,151,248,.8);
