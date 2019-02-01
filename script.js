@@ -40,8 +40,10 @@ $(document).on('click', '.Vary-item.app>ul>li>a', function() {
 });
 
 $('.Vary-item.app .list .showMore').click(function() {
-    $(this).remove();
-    $('.Vary-item.app li').show();
+    if ($('.Vary-item.app .list .showMore b').html() !== '0') {
+        $(this).remove();
+        $('.Vary-item.app li').show();
+    }
 });
 
 
