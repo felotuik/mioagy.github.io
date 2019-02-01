@@ -25,14 +25,11 @@ ajax('data/collection.json', {}, function(data) {
 })
 
 ajax('data/nicetool.json', {}, function(data) {
-    $('.Navbar>li[data-id="app"]>.tag').html(data.length * 12);
-    r = [];
+    $('.Navbar>li[data-id="app"]>.tag').html(data.length);
     for (let i=0,len=data.length; i < len; i++) {
-        for (let i2=0,len2=data[i].msg.length; i2 < len2; i2++) { 
-            r.push(data[i].msg[i2])
-        }
+        var n = 
+        $('.Vary-item.app>ul').append('<li><a href="#app-' + data[i].path + '" title="'+data[i].show+'" target="_blank">'+data[i].name+'</a></li>');
     }
-    console.log(JSON.stringify(r))
 })
 
 if (location.href.substr(0, 5) == 'https') {
