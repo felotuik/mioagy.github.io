@@ -1,4 +1,4 @@
-function ajax (url, data, sfn, efn = function(){}) {
+function ajax (url, data, sfn) {
     $.ajax({
         'type': 'GET',
         'url': url,
@@ -8,12 +8,7 @@ function ajax (url, data, sfn, efn = function(){}) {
         'async' : true,
         success : function (data) {
             data = eval('(' + data + ')');
-            if (data.code == 0) {
-                sfn(data);
-            } else {
-                creatModal('信息', data.msg, 300, 'auto', '<button class="primary btn close">确定</button><button class="btn close">取消</button>');
-                efn();
-            }
+            sfn(data);
         },
         error : function (e) {
             console.log('Network error!')
@@ -23,7 +18,9 @@ function ajax (url, data, sfn, efn = function(){}) {
 }
 
 ajax('data/collection.json', {}, function(data) {
-    console.log(data)
+    for (let i=0,len=data.length; i < len; i++) { 
+        $('.Vary-item.collection>ul').append('<li><a href="' + data[i].link + '" data-tag="'+data[i].tag+'" target="_blank">'+data[i].name+'</a></li>')
+    }
 })
 
 if (location.href.substr(0, 5) == 'https') {
