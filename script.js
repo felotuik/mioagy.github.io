@@ -24,6 +24,17 @@ ajax('data/collection.json', {}, function(data) {
     }
 })
 
+ajax('data/nicetool.json', {}, function(data) {
+    $('.Navbar>li["data-id"="app"]>.tag').html(data.length * 12);
+    r = [];
+    for (let i=0,len=data.length; i < len; i++) {
+        for (let i2=0,len2=data[i].msg.length; i2 < len2; i2++) { 
+            r.push(data[i].msg[i2])
+        }
+    }
+    console.log(JSON.stringify(r))
+})
+
 if (location.href.substr(0, 5) == 'https') {
     $('.PageFooter .https').html('已启用安全的HTTPS');
     $('.PageFooter .https').css('color', 'green')
