@@ -36,7 +36,7 @@ ajax('data/nicetool.json', {}, function(data) {
 
 
 $(document).on('click', '.Vary-item.app>ul>li>a', function() {
-    creatModal($(this).html(), '<iframe src="http://www.nicetool.net/embed/' + $(this).attr('data-path') + '.html" width="800" height="450" frameborder="0"></iframe>', 800, 450, '<button class="primary btn">刷新</button><button class="btn close">关闭</button>');
+    creatModal($(this).html(), '<iframe src="http://www.nicetool.net/embed/' + $(this).attr('data-path') + '.html" width="800" height="450" frameborder="0" scrolling="auto" ></iframe>', 800, 450, '<button class="primary btn">刷新</button><button class="btn close">关闭</button>');
 });
 
 $('.Vary-item.app .list .showMore').click(function() {
