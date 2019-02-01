@@ -27,7 +27,6 @@ ajax('data/collection.json', {}, function(data) {
 ajax('data/nicetool.json', {}, function(data) {
     $('.Navbar>li[data-id="app"]>.tag').html(data.length);
     for (let i=0,len=data.length; i < len; i++) {
-        var n = 
         $('.Vary-item.app>ul').append('<li><a href="#app-' + data[i].path + '" data-path="' + data[i].path + '" title="'+data[i].show+'">'+data[i].name+'</a></li>');
     }
 })
@@ -47,12 +46,10 @@ if (location.href.substr(0, 5) == 'https') {
 //creatModal('输入密钥', '<p>用于某些加密数据的密钥：</p><input type="text" class="b" />', 300, 'auto', '<button class="primary btn">确定</button><button class="btn close">取消</button>');
 
 
-var modalId = 2;
 function creatModal(title, body, w = 500, h = 300, foot = '', auto) {
     var left = $(document).width() / 2 - w / 2,
         top = $(document).height() / 2 - h / 2;
-    $('body').append('<div class="Modal Modal'+modalId+'" style="width:'+w+'px;height:'+h+'px;top:'+top+'px;left:'+left+'px;"><div class="close">×</div><div class="Modal-head fontA">' + title + '</div><div class="Modal-body">' + body + '</div><div class="Modal-foot">' + foot + '</div></div>');
-    modalId++;
+    $('body').append('<div class="Modal" style="width:'+w+'px;height:'+h+'px;top:'+top+'px;left:'+left+'px;"><div class="close">×</div><div class="Modal-head fontA">' + title + '</div><div class="Modal-body">' + body + '</div><div class="Modal-foot">' + foot + '</div></div>');
 }
 
 
