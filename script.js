@@ -28,9 +28,14 @@ ajax('data/nicetool.json', {}, function(data) {
     $('.Navbar>li[data-id="app"]>.tag').html(data.length);
     for (let i=0,len=data.length; i < len; i++) {
         var n = 
-        $('.Vary-item.app>ul').append('<li><a href="#app-' + data[i].path + '" title="'+data[i].show+'" target="_blank">'+data[i].name+'</a></li>');
+        $('.Vary-item.app>ul').append('<li><a href="#app-' + data[i].path + '" data-path="' + data[i].path + '" title="'+data[i].show+'">'+data[i].name+'</a></li>');
     }
 })
+
+$(document).on('click', '.Vary-item.app>ul>li>a', function() {
+    var name = $(this).html()
+    creatModal($(this).html(), '<iframe src="http://www.nicetool.net/embed/' + $(this).attr('data-path') + '.html" width="800" height="450" frameborder="0"></iframe>', 800, 450, '<button class="primary btn">刷新</button><button class="btn close">关闭</button>');
+});
 
 if (location.href.substr(0, 5) == 'https') {
     $('.PageFooter .https').html('已启用安全的HTTPS');
