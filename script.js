@@ -18,7 +18,7 @@ function ajax (url, data, sfn) {
 }
 
 ajax('data/collection.json', {}, function(data) {
-    $('.Navbar>li[data-id=collection]>.tag').html(data.length);
+    $('.Navbar>li["data-id"="collection"]>.tag').html(data.length);
     for (let i=0,len=data.length; i < len; i++) { 
         $('.Vary-item.collection>ul').append('<li><a href="' + data[i].link + '" data-tag="'+data[i].tag+'" target="_blank">'+data[i].name+'</a></li>');
     }
