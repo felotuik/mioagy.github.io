@@ -1,6 +1,6 @@
 function ajax (url, data, sfn, efn = function(){}) {
     $.ajax({
-        'type': 'POST',
+        'type': 'GET',
         'url': url,
         'data': data,
         'cache': false,
