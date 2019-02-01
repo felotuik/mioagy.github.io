@@ -25,7 +25,7 @@ ajax('data/collection.json', {}, function(data) {
 })
 
 ajax('data/nicetool.json', {}, function(data) {
-    $('.Navbar>li["data-id"="app"]>.tag').html(data.length * 12);
+    $('.Navbar>li[data-id="app"]>.tag').html(data.length * 12);
     r = [];
     for (let i=0,len=data.length; i < len; i++) {
         for (let i2=0,len2=data[i].msg.length; i2 < len2; i2++) { 
