@@ -28,7 +28,8 @@ ajax('data/collection.json', {}, function(data) {
 ajax('data/nicetool.json', {}, function(data) {
     $('.Navbar>li[data-id="app"]>.tag').html(data.length);
     for (let i=0,len=data.length; i < len; i++) {
-        $('.Vary-item.app>ul').append('<li><a href="#app-' + data[i].path + '" data-path="' + data[i].path + '" title="'+data[i].show+'">'+data[i].name+'</a></li>');
+        var a = (i > 30) ? ' style="display:none"' : '';
+        $('.Vary-item.app>ul').append('<li'+a+'><a href="#app-' + data[i].path + '" data-path="' + data[i].path + '" title="'+data[i].show+'">'+data[i].name+'</a></li>');
     }
 })
 
