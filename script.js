@@ -44,7 +44,7 @@ if (location.href.substr(0, 5) == 'https') {
     $('.PageFooter .https').parent().attr('href', 'https' + location.href.substring(4));
 }
 
-//creatModal('输入密钥', '<p>用于某些加密数据的密钥：</p><input type="text" class="b" />', 300, 'auto', '<button class="primary btn">确定</button><button class="btn close">取消</button>');
+creatModal('输入密钥', '<p>用于某些加密数据的密钥：</p><input type="text" class="b" />', 300, 'auto', '<button class="primary btn">确定</button><button class="btn close">取消</button>');
 
 
 function creatModal(title, body, w = 500, h = 300, foot = '') {
@@ -63,8 +63,6 @@ $('.Navbar>li').click(function() {
 
 $(document).on('mousedown', '.Modal>.Modal-head', function(e) {
     var d = $(this).parent(),
-        offsetX = e.offsetX,
-        offsetY = e.offsetY,
         x = e.pageX,
         y = e.pageY
 
@@ -74,11 +72,13 @@ $(document).on('mousedown', '.Modal>.Modal-head', function(e) {
 
     $(document).on('mousemove', function(e2) {
         d.css({
-            left: d.offset().left + e2.pageX - x,
-            top: d.offset().top + e2.pageY - y
+            left: parseInt(d.css('left')) + e2.pageX - x,
+            top: parseInt(d.css('top')) + e2.pageY - y
         });
         x = e2.pageX;
         y = e2.pageY;
+        console.log()
+
     });
 
 });
